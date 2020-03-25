@@ -1,0 +1,7 @@
+<section *ngIf='currentUser'>
+  <div>
+    <h2>{{currentUser.name}}</h2>&nbsp;|&nbsp;<a routerLink='/auth/logout'>Log Out</a>
+  </div>
+  <small>{{currentUser.email}}</small>
+  <h2>{{toFixedValue(currentUser.balance)}} PW</h2>
+</section>

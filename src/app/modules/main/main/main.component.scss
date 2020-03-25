@@ -1,0 +1,28 @@
+@import "../../../../styles/colors";
+
+section {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: max-content 1fr max-content;
+  width: 940px;
+  height: 100%;
+  margin: 0 auto;
+
+  article {
+    background: $white;
+    margin-top: 20px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  footer {
+    background: $primary-text;
+    color: $white;
+    padding: 20px;
+
+    a {
+      color: $white;
+    }
+  }
+}

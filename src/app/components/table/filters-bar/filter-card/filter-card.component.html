@@ -1,0 +1,12 @@
+<div class='card'>
+  <div class='title'>{{columnTitle}}:</div>
+  <div
+    *ngFor='let value of values; let first = first'
+    [ngClass]='{"first": first}'
+    [title]='value.filterText()'
+    class='value'
+  >
+    <small>{{value.filterText()}}</small>
+    <svg-icon (click)='removeValue.emit(value)' height='12' icon='cross' width='12'></svg-icon>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+@import "../../../../styles/colors";
+
+section {
+  position: relative;
+
+  .gear {
+    color: $primary-blue_dark;
+    cursor: pointer;
+
+    &:hover {
+      color: lighten($primary-blue_dark, 10);
+    }
+  }
+
+  .container {
+    background: $white;
+    border-radius: 2px;
+    box-shadow: 4px 8px 16px rgba(82, 80, 92, 0.2);
+    max-height: 250px;
+    min-width: 200px;
+    position: absolute;
+    right: 28px;
+    top: 0;
+    z-index: 5;
+
+    .header {
+      padding: 6px 11px 13px;
+    }
+
+    .body {
+      max-height: 213px;
+
+      .column-item {
+        border-bottom: 1px solid $border-light;
+        padding: 1px 8px;
+      }
+    }
+  }
+}

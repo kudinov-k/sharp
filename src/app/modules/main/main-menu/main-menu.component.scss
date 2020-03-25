@@ -1,0 +1,21 @@
+@import "../../../../styles/colors";
+
+.menu-wrap {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  grid-gap: 50px;
+  align-items: center;
+  background: $white;
+  padding: 20px;
+
+  .links {
+    display: grid;
+    grid-auto-flow: column;
+    //grid-template-columns: repeat(auto-fill, 100px);
+    grid-gap: 20px;
+    width: max-content;
+  }
+
+}
+
+

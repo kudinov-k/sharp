@@ -1,0 +1,11 @@
+<div>
+  <p *ngIf='errors["required"]'>Required field</p>
+  <p *ngIf='errors["number"]'>Value must be a number</p>
+  <p *ngIf='errors["email"]'>Email is not valid</p>
+  <p *ngIf='errors["pattern"]'>Value is not valid</p>
+  <p *ngIf='errors["exist"]'>{{errors["exist"]}}</p>
+  <p *ngIf='errors["passwordMismatch"]'>Passwords mismatch</p>
+  <p *ngIf='errors["digits"]'>Value should contain only digits</p>
+  <p *ngIf='errors["gt"]'>Value should be greater than {{errors["gt"].value}}</p>
+  <p *ngIf='errors["lte"]'>Value can not be greater than {{errors["lte"].value}}</p>
+</div>

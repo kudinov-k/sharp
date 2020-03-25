@@ -1,0 +1,21 @@
+<section>
+  <svg-icon (click)='togglePopup()' class='gear' height='24' icon='gear' width='24'></svg-icon>
+
+  <div (clickOutside)='togglePopup()' *ngIf="showPopup" [delayClickOutsideInit]='true' class="container">
+    <div class="header">
+      Fields
+    </div>
+
+    <div class="body">
+      <form [formGroup]="columnsForm">
+        <scrollbar maxHeight='213px'>
+          <ng-container *ngFor="let key of columnKeys">
+            <div *ngIf='columns[key].switchable !== false' class='column-item'>
+              <form-checkbox [formControlName]='key'>{{columns[key].label}}</form-checkbox>
+            </div>
+          </ng-container>
+        </scrollbar>
+      </form>
+    </div>
+  </div>
+</section>

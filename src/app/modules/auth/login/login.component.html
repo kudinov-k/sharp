@@ -1,0 +1,29 @@
+<auth-wrapper header='Authorization'>
+  <form [formGroup]='loginForm'>
+    <input-text
+      [submitted]='submitted'
+      formControlName='email'
+      placeholder='Enter Your Email'
+    >Email
+    </input-text>
+
+    <input-text
+      [showPasswordToggle]='true'
+      [submitted]='submitted'
+      formControlName='password'
+      placeholder='Your Password'
+      type='password'
+    >Password
+    </input-text>
+
+    <btn-flat
+      (handler)='login()'
+      [state]='processed ? "processed" : "active"'
+      [wide]='true'
+    >Log In
+    </btn-flat>
+  </form>
+  <p>
+    Don't have account yet? <a routerLink="/auth/registration">Sign In</a>
+  </p>
+</auth-wrapper>

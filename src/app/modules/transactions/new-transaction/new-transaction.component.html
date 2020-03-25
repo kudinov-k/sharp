@@ -1,0 +1,33 @@
+<section>
+  <h1>New Transaction</h1>
+
+  <form *ngIf='transactionForm' [formGroup]='transactionForm'>
+    <ng-select
+      [itemsObserver]='userObserver'
+      [minTermLength]='1'
+      [submitted]='submitted'
+      bindLabel='name'
+      bindValue='name'
+      formControlName='name'
+      label='Recipient'
+      placeholder='Choose recipient'
+    >
+    </ng-select>
+
+    <input-text
+      [submitted]='submitted'
+      formControlName='amount'
+      placeholder='0.00'
+    >Amount
+    </input-text>
+  </form>
+
+  <div>
+    <btn-flat
+      (handler)='save()'
+      [state]='processed ? "processed" : "active"'
+      type='solid'
+    >Send
+    </btn-flat>
+  </div>
+</section>

@@ -1,0 +1,21 @@
+<table-list
+  [columns]='columns'
+  [items]='items'
+  [loading]='loading'
+>
+  <ng-template let-value='value' tableField='date'>
+    <div>{{value | date: 'M/d/yyyy'}} <span class='time'>{{value | date: 'h:mm:ss aa'}}</span></div>
+  </ng-template>
+
+  <ng-template let-value='value' tableField='amount'>
+    <span [class.red]='value < 0'>{{toFixedValue(value)}} PW</span>
+  </ng-template>
+
+  <ng-template let-value='value' tableField='balance'>
+    {{toFixedValue(value)}} PW
+  </ng-template>
+
+  <ng-template let-item='item' tableField='actions'>
+    <a [state]='{transaction: item}' routerLink='../new' title='Use as template'>Use as template</a>
+  </ng-template>
+</table-list>

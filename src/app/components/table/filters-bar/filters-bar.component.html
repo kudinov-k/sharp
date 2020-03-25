@@ -1,0 +1,20 @@
+<section>
+  <svg-icon height="16" icon='filter-active' width="16"></svg-icon>
+  <div><small>Filters:</small></div>
+
+  <div class='filters'>
+    <ng-container *ngFor='let filter of filters | keyvalue'>
+      <filter-card
+        (removeValue)='removeFilterValues($event, filter.key)'
+        *ngIf='filter.value.size'
+        [columnTitle]='columns[filter.key].label'
+        [values]='filter.value'
+      >
+      </filter-card>
+    </ng-container>
+  </div>
+
+  <div class="clear-all">
+    <small (click)='clearAll()'>Clear All</small>
+  </div>
+</section>

@@ -1,0 +1,61 @@
+@import "fonts";
+@import "colors";
+@import '~ngx-toastr/toastr';
+
+body, h1, h2, h3, h4, ul, ol, li, input, form, label, select, textarea, header, footer, select, option, div {
+  box-sizing: border-box;
+  color: $primary-text;
+  font-family: 'Montserrat', serif;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font: 500 14px 'Montserrat';
+}
+
+body {
+  background: $background;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+b {
+  font-weight: 600;
+}
+
+a {
+  opacity: 0.6;
+  color: $primary-text;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &.active {
+    font-weight: 500;
+    opacity: 1;
+  }
+}
+
+.errors {
+  margin-top: 5px;
+  min-height: 14px;
+}
+
+.toast-title, .toast-message {
+  color: $white;
+}

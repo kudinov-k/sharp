@@ -1,0 +1,66 @@
+@import "../../../../styles/colors";
+
+:host {
+  display: block;
+}
+
+label {
+  display: block;
+  font-weight: normal;
+
+  .label {
+    display: inline-block;
+    margin-bottom: 3px;
+  }
+
+  input {
+    border: 1px solid $disabled;
+    border-radius: 2px;
+    font-weight: normal;
+    padding: 8px 12px;
+    transition: all 0.2s;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+      border: 1px solid $primary-text;
+    }
+
+    &::placeholder {
+      color: $light-text;
+    }
+
+    &.password {
+      padding-right: 40px;
+    }
+  }
+
+  .eye {
+    float: right;
+    margin-right: 8px;
+    margin-top: -29px;
+    position: relative;
+
+    svg-icon {
+      color: $secondary-text;
+      cursor: pointer;
+    }
+
+  }
+
+
+  .invalid {
+    border: 1px solid $primary-red;
+    color: $primary-red;
+    background: rgba(182, 32, 37, 0.04);
+
+    &:focus {
+      border: 1px solid $primary-red;
+    }
+  }
+
+  .required {
+    color: $primary-red;
+  }
+
+}

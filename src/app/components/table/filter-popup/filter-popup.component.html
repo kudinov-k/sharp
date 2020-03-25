@@ -1,0 +1,53 @@
+<section>
+  <svg-icon
+    (click)='togglePopup()'
+    [icon]='filters.get(fieldName)!.size ? "filter-active" : "filter"'
+    class='shadow'
+    height='16'
+    width='16'
+  ></svg-icon>
+
+  <div
+    (clickOutside)='togglePopup()'
+    *ngIf='isOpen'
+    [delayClickOutsideInit]='true'
+    [ngClass]='position'
+    class='popup'
+  >
+    <div class="header">
+      <div class='label'>{{label}}</div>
+      <small (click)='toggleAll()'>Select All</small>
+      <small (click)='clearAll()'>Clear All</small>
+      <div class='search'>
+        <label>
+          <svg-icon height='16' icon='search' width='16'></svg-icon>
+          <input [formControl]='searchText' type="text">
+        </label>
+      </div>
+    </div>
+
+    <div class="body">
+      <scrollbar (scrollToEndHandler)='getNextPage()' [loading]='loading' maxHeight='213px'>
+        <div *ngFor="let item of items" class='column-item'>
+          <form-checkbox
+            (clickHandler)='toggleRow(item.id)'
+            [value]='selectedFilterItems.has(item.id)'
+          >
+            <span>{{item.filterText()}}</span>
+          </form-checkbox>
+        </div>
+      </scrollbar>
+
+      <loading-process *ngIf='loading' [class.absolute]='items.length && loading' [small]='true'></loading-process>
+      <no-data *ngIf='!items.length && !loading' [small]='true'></no-data>
+    </div>
+
+    <div class="footer">
+      <btn-flat (click)='togglePopup()' type='cancel'>Cancel</btn-flat>
+      <btn-flat (click)='onSave()' [state]='items.length ? "active" : "disabled"'>Save</btn-flat>
+    </div>
+
+  </div>
+</section>
+
+

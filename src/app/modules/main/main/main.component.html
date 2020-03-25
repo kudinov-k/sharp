@@ -1,0 +1,12 @@
+<section>
+  <main-menu></main-menu>
+
+  <article [@routeAnimations]="o.isActivated ? o.activatedRoute : ''">
+    <router-outlet #o="outlet"></router-outlet>
+  </article>
+
+  <footer>
+    Developed by <a href="https://www.linkedin.com/in/konstantin-kudinov-7649616a/" target="_blank">Konstantin
+    Kudinov</a> 2020
+  </footer>
+</section>

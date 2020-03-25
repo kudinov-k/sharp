@@ -1,0 +1,9 @@
+<div
+  (psYReachEnd)='scrollToEnd()'
+  [ngClass]='{hovered: hovered, loading: loading}'
+  [ngStyle]='{maxHeight: maxHeight}'
+  class='ps'
+  perfectScrollbar
+>
+  <ng-content></ng-content>
+</div>

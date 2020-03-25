@@ -1,0 +1,119 @@
+@import "../../../../styles/colors";
+
+section {
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  svg-icon {
+    cursor: pointer;
+
+    &.shadow {
+      box-shadow: 0 3px 5px rgba(115, 128, 153, 0.12);
+    }
+  }
+
+  .popup {
+    background: $white;
+    border-radius: 2px;
+    box-shadow: 4px 8px 16px rgba(82, 80, 92, 0.2);
+    max-width: 400px;
+    min-width: 225px;
+    position: absolute;
+    top: 22px;
+    z-index: 5;
+
+    &.left {
+      left: 0;
+    }
+
+    &.right {
+      right: 0
+    }
+
+    .header {
+      border-bottom: 1px solid $border;
+      padding: 8px 10px;
+
+      .label {
+        line-height: 20px;
+        margin-bottom: 8px;
+      }
+
+      small {
+        color: $primary-blue;
+        cursor: pointer;
+        display: inline-block;
+        user-select: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        &:first-of-type {
+          margin-right: 16px;
+        }
+      }
+
+      .search {
+        background: $background-gray;
+        border-radius: 2px;
+        display: flex;
+        margin-top: 10px;
+        padding: 6px;
+
+        label {
+          align-items: center;
+          display: flex;
+
+          svg-icon {
+            margin-left: 0;
+          }
+
+          input {
+            background: transparent;
+            border: none;
+            font-weight: 400;
+            margin-left: 10px;
+            outline: none;
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .body {
+      max-height: 213px;
+      position: relative;
+
+      loading-process, no-data {
+        width: 100%;
+      }
+
+      loading-process.absolute {
+        position: absolute;
+        top: 20px
+      }
+
+      .column-item {
+        border-bottom: 1px solid $border-light;
+        max-width: 400px;
+        overflow: hidden;
+        padding: 1px 8px;
+        white-space: nowrap;
+
+        span {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px;
+    }
+  }
+}
+

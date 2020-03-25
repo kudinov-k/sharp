@@ -1,0 +1,107 @@
+<section [ngClass]='{hovered: isHoveredRows}' class='table'>
+  <div>
+    <filters-bar
+      (updateFilters)='handleFilters($event)'
+      *ngIf='filters.size'
+      [columns]='columns'
+      [filters]='filters'
+    ></filters-bar>
+  </div>
+
+  <div [class.border-light]='rowBorder === "light"' [ngClass]='{"bordered": isBodyBordered}' class='header'>
+    <div [ngStyle]='{gridTemplateColumns: columnsWidth}' class='row'>
+      <div
+        *ngFor='let column of displayColumnKeys; let last = last;'
+        [class.active]='isFilterActive(column)'
+        [class.last.th]='last'
+        [ngClass]='columns[column].labelClasses'
+        [ngStyle]='columns[column].labelStyle'
+        class='th'
+      >
+        <ng-container
+          *ngIf='headerTemplates.has(column)'
+          [ngTemplateOutlet]='headerTemplates.get(column)'
+        ></ng-container>
+
+        <span *ngIf='!headerTemplates.has(column)' [title]='columns[column].label'>{{columns[column].label}}</span>
+
+        <filter-popup
+          (handlerFilterClick)='toggleFilterPopup($event)'
+          (updateFilters)='handleFilters($event)'
+          *ngIf='isFilterable(column)'
+          [currentField]='currentFilterPopup'
+          [fieldName]='column'
+          [filters]='filters'
+          [label]='columns[column].label'
+          [position]='columns[column].filterPopupPosition'
+          [requestObject]='columns[column].filterValuesRequestObject'
+          [valuesObservable]='columns[column].filterValuesObservable'
+        ></filter-popup>
+
+        <svg-icon
+          (click)='sortBy(column)'
+          *ngIf='isSortable(column)'
+          [icon]='getSortIcon(column)'
+          height='16'
+          width='16'
+        ></svg-icon>
+
+      </div>
+
+      <div *ngIf='isColumnsSwitchable' class='switcher'>
+        <columns-switcher
+          (updateColumnList)='handleColumnsSwitcher($event)'
+          [columns]='columns'
+          [displayColumnKeys]='displayColumnKeys'
+          title='Switch columns'
+        >
+        </columns-switcher>
+      </div>
+
+    </div>
+  </div>
+
+  <div [class.border-light]='rowBorder === "light"' [ngClass]='{"bordered": isBodyBordered}' class='bulk'>
+    <ng-container [ngTemplateOutlet]='bulkTemplate'></ng-container>
+  </div>
+
+  <div [ngClass]='{"bordered": isBodyBordered, "loading": loading}' class='body'>
+    <scrollbar
+      (scrollToEndHandler)='scrollToBottomHandler.emit()'
+      *ngIf='items.length'
+      [hovered]='isHoveredRows'
+      [loading]='loading'
+    >
+      <div
+        *ngFor='let item of items'
+        [@tableRowAnimation]='{value: ":enter", params : {rowHeight: rowHeight - 3}}'
+        [class.border-light]='rowBorder === "light"'
+        [class.selected]='selectedRows.has(item.id)'
+        [class.switch-padding]='isColumnsSwitchable'
+        [ngStyle]='{gridTemplateColumns: columnsWidth, height: rowHeight + "px"}'
+        class='row'
+      >
+        <div *ngFor='let column of displayColumnKeys' [ngStyle]='columns[column].valueCellStyle' class='td'>
+          <div [class.no-wrap-text]='!columns[column].wrapText'
+               [ngClass]='columns[column].valueClasses'
+               [ngStyle]='columns[column].valueStyle'
+               [ngSwitch]='fieldTemplates.has(column)'
+          >
+            <ng-container
+              *ngSwitchCase='true'
+              [ngTemplateOutletContext]="{value: item[column], item: item}"
+              [ngTemplateOutlet]='fieldTemplates.get(column)'
+            ></ng-container>
+            <ng-container *ngSwitchCase='false'>
+              {{getValue(item, column)}}
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </scrollbar>
+
+    <loading-process *ngIf='loading' [small]='smallNoDataLoadingBlocks'></loading-process>
+    <no-data *ngIf='!items.length && !loading' [small]='smallNoDataLoadingBlocks'></no-data>
+  </div>
+
+</section>

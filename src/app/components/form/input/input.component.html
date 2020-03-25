@@ -1,0 +1,29 @@
+<label>
+  <span #ref class='label'>
+    <ng-content></ng-content>
+  </span>
+  <span *ngIf='isRequired && !!ref.innerHTML.trim()' class='required'> *</span>
+
+  <input
+    (blur)='innerTouch()'
+    (input)='innerChange()'
+    [class.invalid]='isInvalid()'
+    [class.password]='showPasswordToggle'
+    [formControl]='control'
+    [placeholder]=placeholder
+    [type]='type'
+    autocomplete='nope'
+  >
+  <span (click)='togglePassword()' *ngIf='showPasswordToggle' class='eye'>
+    <svg-icon
+      [icon]='showPassword ? "eye" : "eye-close"'
+      height='24'
+      width='24'
+    >
+    </svg-icon>
+  </span>
+</label>
+
+<div class='errors'>
+  <error-message *ngIf='isInvalid()' [errors]='ngControl.control!.errors'></error-message>
+</div>

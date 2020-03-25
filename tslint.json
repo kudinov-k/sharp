@@ -1,5 +1,11 @@
 {
   "extends": "tslint:recommended",
+  "linterOptions": {
+    "exclude": [
+      "src/app/components/form/datepicker/lib/**/*.ts",
+      "src/app/core/class-transformer/**/*.ts"
+    ]
+  },
   "rules": {
     "array-type": false,
     "arrow-parens": false,
@@ -10,13 +16,13 @@
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
     "directive-selector": [
-      true,
+      false,
       "attribute",
       "app",
       "camelCase"
     ],
     "component-selector": [
-      true,
+      false,
       "element",
       "app",
       "kebab-case"
@@ -57,7 +63,7 @@
       true,
       "ignore-params"
     ],
-    "no-non-null-assertion": true,
+    "no-non-null-assertion": false,
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-var-requires": false,
@@ -83,7 +89,24 @@
     "template-banana-in-box": true,
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
-    "use-pipe-transform-interface": true
+    "use-pipe-transform-interface": true,
+    "no-unused-expression": [
+      true,
+      "allow-fast-null-checks"
+    ],
+    "variable-name": {
+      "options": [
+        "allow-leading-underscore",
+        "allow-pascal-case"
+      ]
+    },
+    "semicolon": [
+      false,
+      "always"
+    ],
+    "eofline": true,
+    "no-string-literal": false,
+    "no-namespace": false
   },
   "rulesDirectory": [
     "codelyzer"

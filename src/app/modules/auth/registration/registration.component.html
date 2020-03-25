@@ -1,0 +1,45 @@
+<auth-wrapper header='Registration'>
+  <form [formGroup]='registrationForm'>
+    <input-text
+      [submitted]='submitted'
+      formControlName='username'
+      placeholder='Enter Your Name'
+    >Email
+    </input-text>
+
+    <input-text
+      [submitted]='submitted'
+      formControlName='email'
+      placeholder='Enter Your Email'
+    >Email
+    </input-text>
+
+    <input-text
+      [showPasswordToggle]='true'
+      [submitted]='submitted'
+      formControlName='password'
+      placeholder='Your Password'
+      type='password'
+    >Password
+    </input-text>
+
+    <input-text
+      [showPasswordToggle]='true'
+      [submitted]='submitted'
+      formControlName='confirmPassword'
+      placeholder='Confirm Your Password'
+      type='password'
+    >Password
+    </input-text>
+
+    <btn-flat
+      (handler)='register()'
+      [state]='processed ? "processed" : "active"'
+      [wide]='true'
+    >Sign In
+    </btn-flat>
+  </form>
+  <p>
+    If you have account already, <a routerLink="/auth/login">Log In</a>
+  </p>
+</auth-wrapper>

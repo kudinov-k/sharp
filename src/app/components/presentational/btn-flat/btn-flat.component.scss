@@ -1,0 +1,89 @@
+@import "../../../../styles/colors";
+
+button {
+  align-items: center;
+  border: none;
+  border-radius: 2px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  font-weight: 500;
+  justify-content: center;
+  margin-left: 8px;
+  min-width: 70px;
+  outline: none;
+  padding: 0 12px;
+
+  &.big {
+    height: 36px;
+  }
+
+  &.small {
+    font-size: 12px;
+    font-weight: 600;
+    height: 28px;
+  }
+
+  &.responsive {
+    height: 100%;
+  }
+
+  &.solid {
+    background: $status-active;
+    color: $white;
+
+    &.active:hover {
+      background: darken($status-active, 10);
+    }
+
+    &.disabled {
+      //@extend .processed;
+      background: $disabled;
+
+      &:hover {
+        background: $disabled;
+      }
+    }
+  }
+
+  &.cancel {
+    background: $white;
+    color: $light-text;
+    width: fit-content;
+
+    &.active:hover {
+      color: darken($light-text, 10);
+    }
+
+    &.disabled {
+      color: lighten($light-text, 10);
+      cursor: default;
+    }
+  }
+
+  &.processed {
+    background: lighten($status-active, 20);
+    color: $background;
+    cursor: default;
+  }
+
+  &.outline {
+    background: rgba($status-active, .06);
+    color: $status-active;
+
+    &.active:hover {
+      background: $status-active;
+      color: $white;
+    }
+
+    &.disabled {
+      color: lighten($light-text, 10);
+      cursor: default;
+    }
+  }
+
+  &.wide {
+    margin: 0;
+    width: 100%;
+  }
+}

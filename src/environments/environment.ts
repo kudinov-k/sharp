@@ -3,8 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
-};
+  production: false,
+  pageLimit: 20,
+  userTokenStorageKey: 'PW_USER_TOKEN',
+  serverUrl: 'http://193.124.114.46:3001',
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

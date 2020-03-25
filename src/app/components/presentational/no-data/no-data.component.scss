@@ -1,0 +1,26 @@
+@import "../../../../styles/colors";
+
+section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5%;
+
+  svg-icon {
+    margin-bottom: 20px;
+  }
+
+  &.small {
+    padding: 2% 0;
+
+    div {
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    svg-icon {
+      margin-bottom: 10px;
+    }
+  }
+}
+

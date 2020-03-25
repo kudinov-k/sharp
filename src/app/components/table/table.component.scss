@@ -1,0 +1,161 @@
+@import "../../../styles/colors";
+
+.table {
+  display: grid;
+  grid-template-rows: minmax(0, max-content) 54px minmax(0, max-content) minmax(0, 1fr);
+  max-height: 100%;
+
+  &.hovered {
+    .header, filters-bar, .bulk {
+      margin-right: 5px;
+    }
+
+    .header.bordered {
+      margin-right: 0;
+    }
+
+    .body .row {
+      &:hover {
+        box-shadow: 2px 3px 8px rgba(82, 96, 102, 0.15), 0 1px 3px rgba(184, 187, 190, 0.2);
+        z-index: 1;
+
+        .td .hovered {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .header {
+    align-items: center;
+    display: grid;
+    height: 54px;
+
+    &.bordered {
+      padding-left: 16px;
+    }
+
+    &.border-light {
+      border-color: $border-light;
+    }
+
+    .th {
+      align-items: center;
+      color: $secondary-text;
+      display: flex;
+      font-size: 12px;
+      padding: 0 8px;
+
+      &.last-th {
+        padding-right: 0;
+      }
+
+      span {
+        //margin-right: 8px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      filter-popup {
+        margin-right: 4px;
+      }
+
+      &.active {
+        font-weight: 600;
+      }
+
+    }
+
+    .switcher {
+      display: flex;
+      justify-content: flex-end;
+      padding-left: 4px;
+    }
+  }
+
+  .bulk {
+    border-bottom: 1px solid $border;
+
+    &.border-light {
+      border-color: $border-light;
+    }
+
+    &.bordered {
+      border-bottom: none;
+    }
+  }
+
+  .row {
+    align-items: center;
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  .td {
+    display: flex;
+    padding: 0 8px;
+
+    .no-wrap-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .hovered {
+      display: none;
+    }
+  }
+
+  .body {
+    overflow: hidden;
+    position: relative;
+
+    loading-process {
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    &.loading {
+      min-height: 178px;
+    }
+
+    &.hovered {
+      scrollbar .ps {
+        padding-bottom: 5px;
+        padding-right: 4px;
+      }
+    }
+
+    .row {
+      background: $white;
+      border-bottom: 1px solid $border;
+      box-sizing: border-box;
+      position: relative;
+
+      &.border-light {
+        border-color: $border-light;
+      }
+
+      &.switch-padding {
+        padding-right: 28px;
+      }
+
+      &.selected {
+        background: rgba(241, 245, 248, 0.6)
+      }
+    }
+
+    &.bordered {
+      background: $white;
+      border: 1px solid $border;
+      border-radius: 3px;
+      padding: 4px 16px;
+
+      .row.switch-padding {
+        padding-right: 12px;
+      }
+    }
+  }
+}
